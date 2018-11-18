@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton1" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/moneyButton"
+        android:id="@+id/pedirContaButton"
         android:layout_width="60dp"
         android:layout_height="64dp"
         android:layout_gravity="end|bottom"
