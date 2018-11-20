@@ -36,14 +36,31 @@ public class ItemComandinhaAdapter extends ArrayAdapter<ItemComandinha> implemen
     }
 
 
-    @Override
-    public void onClick(View v) {
-        Log.i(ItemComandinha.class.getName(), "Clicou aqui");
-        Toast.makeText(this.mContext, "Lucas", Toast.LENGTH_SHORT).show();
+    private void adicionaConsumo(int position) {
+        ItemComandinha item = this.dataSet.get(position);
+        item.setQuantidade(item.getQuantidade() + 1);
+        notifyDataSetChanged();
+    }
+
+    private void removeConsumo(int position) {
+        ItemComandinha item = this.dataSet.get(position);
+        if(item.getQuantidade() >= 1) {
+            item.setQuantidade(item.getQuantidade() - 1);
+            notifyDataSetChanged();
+        } else {
+            Toast.makeText(getContext(), "Vai devegar na cerveja amigo(a)", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public void onClick(View v) {
+        Log.i(ItemComandinha.class.getName(), "Clicou aqui");
+        View parent = (View)v.getParent();
+        Toast.makeText(this.mContext, String.valueOf(parent.getTag()), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ItemComandinha itemComandinha = getItem(position);
 
         ViewHolder viewHolder;
@@ -64,8 +81,18 @@ public class ItemComandinhaAdapter extends ArrayAdapter<ItemComandinha> implemen
 
         viewHolder.itemComandaNomeTextView.setText(itemComandinha.getNome());
         viewHolder.itemComandaQuantidadeTextView.setText(String.valueOf(itemComandinha.getQuantidade()));
-        viewHolder.itemComandaMaisUmButton.setOnClickListener(this);
-        viewHolder.itemComandaTiraUmButton.setOnClickListener(this);
+        viewHolder.itemComandaMaisUmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adicionaConsumo(position);
+            }
+        });
+        viewHolder.itemComandaTiraUmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeConsumo(position);
+            }
+        });
 
         return convertView;
     }
