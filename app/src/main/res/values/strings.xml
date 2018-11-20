@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Comandinha</string>
+    <string name="alterar">Alterar</string>
+    <string name="excluir">Excluir</string>
 </resources>

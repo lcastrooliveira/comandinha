@@ -1,12 +1,14 @@
 package comandinha.lcastrooliveira.com.comandinha.model;
 
-public class ItemComandinha {
+import android.support.annotation.NonNull;
+
+public class ItemComandinha implements Comparable<ItemComandinha> {
 
     private String nome;
     private int quantidade;
 
     public ItemComandinha() {
-
+        this.quantidade = 0;
     }
 
     public ItemComandinha(String nome, int quantidade) {
@@ -28,5 +30,10 @@ public class ItemComandinha {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    @Override
+    public int compareTo(@NonNull ItemComandinha o) {
+        return this.nome.compareTo(o.nome);
     }
 }
