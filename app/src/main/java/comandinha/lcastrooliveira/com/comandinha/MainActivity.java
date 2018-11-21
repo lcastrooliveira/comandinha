@@ -1,9 +1,11 @@
 package comandinha.lcastrooliveira.com.comandinha;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +16,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import comandinha.lcastrooliveira.com.comandinha.adapters.ItemComandinhaAdapter;
 import comandinha.lcastrooliveira.com.comandinha.model.ItemComandinha;
@@ -46,7 +50,16 @@ public class MainActivity extends AppCompatActivity {
         pedirContaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "A conta por favor!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), SummaryActivity.class);
+                ArrayList<String> items = new ArrayList<>();
+                int total = 0;
+                for(ItemComandinha ic : itemsComanda) {
+                    items.add(ic.getNome()+"\t"+ic.getQuantidade());
+                    total += ic.getQuantidade();
+                }
+                intent.putStringArrayListExtra("ITEMS", items);
+                intent.putExtra("TOTAL", total);
+                startActivity(intent);
             }
         });
     }
@@ -54,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        System.out.println("ENTERED IN THE CONTEXT MENU BLOCK");
         getMenuInflater().inflate(R.menu.principal_menu_contexto, menu);
     }
 
@@ -74,10 +86,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.principal_menu_opcoes, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuItemDetalhes:
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.menuItemConfig:
+                Toast.makeText(this, "hey", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void popularLista() {
         itemsComanda = new ArrayList<>();
-        itemsComanda.add(new ItemComandinha("Chopp", 2));
-        itemsComanda.add(new ItemComandinha("Porção", 1));
         adapter = new ItemComandinhaAdapter(itemsComanda, getApplicationContext());
         listViewComandinha.setAdapter(adapter);
     }

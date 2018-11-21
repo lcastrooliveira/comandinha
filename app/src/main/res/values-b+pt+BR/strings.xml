@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Comandinha</string>
+    <string name="alterar">Alterar</string>
+    <string name="excluir">Excluir</string>
+    <string name="sobre">About</string>
+    <string name="configuracoes">Settings</string>
+    <string name="voltar">Voltar</string>
+    <string name="sobre_este_app">$obre este App</string>
+    <string name="promo_text">Quantas vezes você já foi ao Bar beber com os amigos e na hora de pagar conta foi aquela confusão não é mesmo? Principalmente depois de tomar diversos chopps, é muito comum na hora de quitar o valor com o bar ou restaurante, muitas pessoas não lembrem o que exatamente pediram. Nestas situações é muito comum recorrer ao bom e velhão \"rachão\". Não mais com o app da Comandinha! Agora você vai saber exatamente quanto consumiu no happy hour e vai parar de pagar breja daquele seu amigo folgado que bebe muito mais do que você e dá uma de João Sem Braço na hora de pagar.</string>
+    <string name="total_items">Total de Itens</string>
+    <string name="drive_safe">Beba com responsabilidade: Não beba e dirija</string>
+</resources>

@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">Comandinha</string>
-    <string name="alterar">Alterar</string>
-    <string name="excluir">Excluir</string>
+    <string name="app_name">Little tab</string>
+    <string name="alterar">Update</string>
+    <string name="excluir">Remove</string>
+    <string name="sobre">About</string>
+    <string name="configuracoes">Settings</string>
+    <string name="voltar">Back</string>
+    <string name="sobre_este_app">About thi$ App</string>
+    <string name="promo_text">How many times have you ever gone to the bar to have a couple of drinks with your foes and when its time to pay for the check a lot of confusion goes on ? Specially after having many drinks, its is very common when paying the table at the bar or restaurant for people not reminding what everyone has ordered. In these situations usually the gold old “split” happens. Not anymore: Little tab to the rescue! From now on you’ll gonna know exactly what you’ve ordered in your happy hours and you’ll finally gonna stop paying drinks for your sassy buddy that drinks way more than you and plays dumb when it comes to pay.</string>
+    <string name="total_items">Total Items</string>
+    <string name="drive_safe">Drink responsabliy: Don\'t drive home</string>
 </resources>
